@@ -1,23 +1,24 @@
 package com.example.daddycoffie;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductList {
 
-    ArrayList<product> plist;
+    List<product> plist;
 
-    public ProductList(ArrayList<product> plist) {
+    public ProductList(List<product> plist) {
         this.plist = plist;
     }
 
     public ProductList() {
     }
 
-    public ArrayList<product> getPlist() {
+    public List<product> getPlist() {
         return plist;
     }
 
-    public void setPlist(ArrayList<product> plist) {
+    public void setPlist(List<product> plist) {
         this.plist = plist;
     }
 }

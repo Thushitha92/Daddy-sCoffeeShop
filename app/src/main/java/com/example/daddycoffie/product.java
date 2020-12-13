@@ -2,26 +2,30 @@ package com.example.daddycoffie;
 
 public class product {
 
-    private String name;
-    private String img;
-    private double price;
-    private int proId;
-    private  String desc;
+    private Integer id;
 
-    public product(String name, String img, double price, int proId, String desc) {
-        this.name = name;
+    private String img;
+
+    private double price;
+
+    private String pname;
+
+    private String description;
+
+    public product(Integer id, String img, double price, String pname, String description) {
+        this.id = id;
         this.img = img;
         this.price = price;
-        this.proId = proId;
-        this.desc = desc;
+        this.pname = pname;
+        this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public Integer getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getImg() {
@@ -40,19 +44,19 @@ public class product {
         this.price = price;
     }
 
-    public int getProId() {
-        return proId;
+    public String getPname() {
+        return pname;
     }
 
-    public void setProId(int proId) {
-        this.proId = proId;
+    public void setPname(String pname) {
+        this.pname = pname;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

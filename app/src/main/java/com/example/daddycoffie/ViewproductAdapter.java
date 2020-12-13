@@ -1,11 +1,14 @@
 package com.example.daddycoffie;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,10 +21,10 @@ import java.util.List;
 
 
 public class ViewproductAdapter extends RecyclerView.Adapter<ViewproductAdapter.MyViewHolder> {
-    ArrayList<product> productList;
+    List<product> productList;
     Context context;
 
-    public ViewproductAdapter(ArrayList<product> productList, Context context) {
+    public ViewproductAdapter(List<product> productList, Context context) {
         this.productList = productList;
         this.context = context;
     }
@@ -41,19 +44,40 @@ public class ViewproductAdapter extends RecyclerView.Adapter<ViewproductAdapter.
         RequestOptions requestOptions = new RequestOptions();
 
         Glide.with(context).setDefaultRequestOptions(requestOptions).load(p.getImg()).into(holder.image);
-        holder.name.setText(p.getName());
+        holder.name.setText(p.getPname());
         holder.price.setText(""+p.getPrice());
 //        holder.price.setText(p.getDescription());
+        String name = p.getPname();
+        int pid = p.getId();
+
+
+
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, pid+""+name, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, SingleViewProduct.class);
+                intent.putExtra("pid",p.getId());
+                intent.putExtra("pname",p.getPname());
+                intent.putExtra("pdes",p.getDescription());
+                intent.putExtra("pimg",p.getImg());
+                intent.putExtra("pprice",p.getPrice());
+
+                context.startActivity(intent);
+
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return productList.size();
-//    return 5;
+
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         AppCompatImageView image;
+        AppCompatButton button;
         AppCompatTextView name,description,price;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,7 +85,8 @@ public class ViewproductAdapter extends RecyclerView.Adapter<ViewproductAdapter.
             image = itemView.findViewById(R.id.imageView);
             name = itemView.findViewById(R.id.productname);
             price = itemView.findViewById(R.id.productprice);
-//            description = itemView.findViewById(R.id.description);
+            button = itemView.findViewById(R.id.viewbtn);
+
 
 
         }

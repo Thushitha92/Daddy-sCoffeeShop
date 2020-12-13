@@ -11,6 +11,7 @@ import android.provider.SyncStateContract;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +27,6 @@ public class HomePage extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    ArrayList<product> plist;
-
     private Retrofit retrofit;
     private JSONPlaceHolderApi jsonPlaceHolderapi;
     private Gson gson;
@@ -41,7 +40,6 @@ public class HomePage extends AppCompatActivity {
         retrofit = new Retrofit.Builder().baseUrl(Constants.HTTP.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         jsonPlaceHolderapi = retrofit.create(JSONPlaceHolderApi.class);
 
-        plist = new ArrayList<>();
         recyclerView = findViewById(R.id.homerecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
@@ -52,24 +50,24 @@ public class HomePage extends AppCompatActivity {
 
     private void viewAllProducts() {
 
-        Call<ProductList> products = jsonPlaceHolderapi.getProducts();
-        products.enqueue(new Callback<ProductList>() {
+        Call<List<product>> products = jsonPlaceHolderapi.getProducts();
+        products.enqueue(new Callback<List<product>>() {
             @Override
-            public void onResponse(Call<ProductList> call, Response<ProductList> response) {
+            public void onResponse(Call<List<product>> call, Response<List<product>> response) {
 
                 if(response.isSuccessful()){
 
-                    ProductList body = response.body();
-                    plist = body.getPlist();
-                    ViewproductAdapter adapter = new ViewproductAdapter( plist,HomePage.this);
+                    List<product> body = response.body();
+                    ViewproductAdapter adapter = new ViewproductAdapter( body,HomePage.this);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 }
-
+                System.out.println("ds");
             }
 
             @Override
-            public void onFailure(Call<ProductList> call, Throwable t) {
+            public void onFailure(Call<List<product>> call, Throwable t) {
+
                 System.out.println(t);
             }
         });
