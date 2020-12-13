@@ -14,8 +14,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.List;
-
+import Model.Order;
 import Util.Constants;
 import Util.JSONPlaceHolderApi;
 import retrofit2.Call;

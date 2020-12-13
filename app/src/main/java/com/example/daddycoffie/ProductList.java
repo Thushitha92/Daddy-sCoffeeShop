@@ -1,7 +1,8 @@
 package com.example.daddycoffie;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import Model.product;
 
 public class ProductList {
 

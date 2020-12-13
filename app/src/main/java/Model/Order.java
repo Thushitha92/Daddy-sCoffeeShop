@@ -1,4 +1,4 @@
-package com.example.daddycoffie;
+package Model;
 
 public class Order {
 

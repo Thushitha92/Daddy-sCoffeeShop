@@ -1,8 +1,7 @@
 package Util;
 
-import com.example.daddycoffie.Order;
-import com.example.daddycoffie.ProductList;
-import com.example.daddycoffie.product;
+import Model.Order;
+import Model.product;
 
 import java.util.List;
 

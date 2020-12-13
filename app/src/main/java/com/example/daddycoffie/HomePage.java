@@ -2,19 +2,16 @@ package com.example.daddycoffie;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
+import Model.product;
 import Util.Constants;
 import Util.JSONPlaceHolderApi;
 import retrofit2.Call;

@@ -16,8 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import Model.product;
 
 
 public class ViewproductAdapter extends RecyclerView.Adapter<ViewproductAdapter.MyViewHolder> {
